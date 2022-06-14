@@ -7,27 +7,30 @@
     <script src="https://kit.fontawesome.com/0f30555f66.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-4 offset-xl-4">
-                <div class="card mt-5">
-                    <div class="card-header">
-                        <h2 class="card-title">Stimme jetzt ab!</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="d-shrink-0">
-                                <img src="https://via.placeholder.com/60"/>
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5>Spaghetti Bolognese
-                                    <span class="float-end text-primary" style="curser: pointer;">
+    <div id="app">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-4 offset-xl-4">
+                    <div class="card mt-5">
+                        <div class="card-header">
+                            <h2 class="card-title">Stimme jetzt ab!</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="d-shrink-0">
+                                    <img src="https://via.placeholder.com/60"/>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 v-once>
+                                        {{ mysubmissions[0].title }}
+                                        <span class="float-end text-primary" style="curser: pointer;">
                                         <i class="fa fa-chevron-up"></i>
-                                        <strong>16</strong>
+                                        <strong>{{ mysubmissions[0].votes }}</strong>
                                     </span>
-                                </h5>
-                                <div>Ein Nudelgericht mit Hackfleischsoße.</div>
-                                <small class="text-muted">Eingericht von: Italien</small>
+                                    </h5>
+                                    <div>{{ mysubmissions[0].desc }}</div>
+                                    <small class="text-muted">Eingericht von: {{ mysubmissions[0].author }}</small>
+                                </div>
                             </div>
                         </div>
                     </div>
