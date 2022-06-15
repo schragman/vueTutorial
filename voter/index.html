@@ -12,8 +12,9 @@
             <div class="row">
                 <div class="col-xl-4 offset-xl-4">
                     <div class="card mt-5">
-                        <div class="card-header">
-                            <h2 class="card-title">Stimme jetzt ab!
+                        <div class="card-header"
+                             v-bind:class="cardHeaderBackgroundColor">
+                            <h2 class="card-title" v-bind:style="cardTitleFontSize">Stimme jetzt ab!
                                 <span class="float-end">{{ totalVotes }} Stimmen</span>
                             </h2>
                         </div>
@@ -29,7 +30,7 @@
                                     </div>
                                     <div class="flex-grow-1 ms-3">
                                         <h5>
-                                            {{ submission.title }} {{ index }}
+                                            {{ submission.title }}
                                             <span class="float-end text-primary"
                                                   style="curser: pointer"
                                                   v-on:click="upvote(submission.id)">
