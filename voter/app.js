@@ -34,17 +34,7 @@ const app = Vue.createApp({
       const submission = this.mysubmissions
         .find((iteratedItem) => iteratedItem.id === submissionId);
       submission.votes++;
-      /*console.log();
-      this.mysubmissions[0].votes++;*/
     },
-    /*logConsole(text) {
-      console.log(text);
-    },*/
-    /*totalVotes() {
-      return this.mysubmissions.reduce((totalVotes, submission) => {
-        return totalVotes + submission.votes;
-      }, 0);
-    }*/
   },
 
   watch: {
@@ -67,6 +57,36 @@ const app = Vue.createApp({
     },*/
   }
 });
+
+app.component("SubmissionListItem", {
+  //Optionen
+  props: ["submission"],
+  methods: {
+    upvote() {
+      this.submission.votes++;
+    }
+  },
+  template: `
+    <div class="d-flex">
+      <div class="d-shrink-0">
+        <img v-bind:src="submission.img"/>
+      </div>
+      <div class="flex-grow-1 ms-3">
+        <h5>
+          {{ submission.title }}
+          <span class="float-end text-primary"
+                style="curser: pointer"
+                v-on:click="upvote()">
+              <i class="fa fa-chevron-up"></i>
+              <strong>{{ submission.votes }}</strong>
+          </span>
+        </h5>
+        <div v-html="submission.desc"></div>
+        <small class="text-muted">Eingericht von: {{ submission.author }}</small>
+      </div>
+  </div>
+  `
+})
 
 //Liefert die Instanz zur Root-Component zurück
 const vm = app.mount('#app')
